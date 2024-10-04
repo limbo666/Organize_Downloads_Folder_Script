@@ -36,7 +36,7 @@ The script comes with an Options.ini file that allows you to customize how your 
 1. Download the release package here.
 2. Extract the files to a folder of your choice.
 3. Open the Options.ini file and configure it based on your preferred organization method.
-4. Run the script manually in PowerShell: <code>.\OrganizeDownloads.ps1 </code> <br>
-   Altenatively you can double click the `OrganizeDownloads.ps1` file to run it if your system has the appropriate file association.  [Learn more about it](https://locall.host/run-with-powershell-double-click/)
+4. Run the script manually in PowerShell: <code>.\Organize-Downloads.ps1 </code> <br>
+   Altenatively you can double click the `Organize-Downloads.ps1` file to run it if your system has the appropriate file association.  [Learn more about it](https://locall.host/run-with-powershell-double-click/)
 
 Enjoy organizing your Downloads folder with ease!
