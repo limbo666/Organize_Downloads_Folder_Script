@@ -11,6 +11,7 @@ by file extension, by file group (e.g., images, documents, compressed files), or
  - Organize by Date: Moves files into folders based on their creation date.
  - File Explorer Integration: Automatically opens the Downloads folder before starting the organization process (configurable).
  - Logging: Records the organization process in a log file (optional).
+ - Option to ignore today's download files for easy access.
 
 ### Configuration ###
 
@@ -32,6 +33,11 @@ The script comes with an Options.ini file that allows you to customize how your 
     ; True - Log enabled
     ; False - Log Disabled
     Log = True
+    ; Ignore today's downloads
+    ; True - Ignore files created today
+    ; False - Include files created today
+    IgnoreToday = True
+
 ### Setup ###
 1. Download the release package here.
 2. Extract the files to a folder of your choice.
