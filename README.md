@@ -52,6 +52,6 @@ For easy use the file `#Set Options and Run.ps1` offers an interface to set all 
      **B.** Open the file `Options.ini` and configure it based on your preferred organization method.<br>
       Run the file `Organize-Downloads.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\Organize-Downloads.ps1 </code>. <br> 
  <br> 
-Learn more about file association https://locall.host/run-with-powershell-double-click/ \
+Learn more about file association https://locall.host/run-with-powershell-double-click/ <br>
  
 Enjoy organizing your Downloads folder with ease!
