@@ -1,4 +1,4 @@
-s # Organize Downloads Folder Script
+# Organize Downloads Folder Script
 **A PowerShell script to organize your Downloads folder based on file types, creation dates, or custom groupings.**
 
 This script allows you to organize files in your Downloads folder according to three different methods: 
@@ -12,7 +12,7 @@ by file extension, by file group (e.g., images, documents, compressed files), or
  - File Explorer Integration: Automatically opens the Downloads folder before starting the organization process (configurable).
  - Logging: Records the organization process in a log file (optional).
  - Option to ignore today's download files for easy access.
- - GUI to select options. Offered as seperate laucher script `#Set Options and Run.ps1`
+ - GUI to select options. Offered as seperate launcher script `#Set Options and Run.ps1`
    
 
 ### Configuration ###
@@ -46,8 +46,12 @@ For easy use the file `#Set Options and Run.ps1` offers an interface to set all 
 ### Setup and Run ###
 1. Download the release package here.
 2. Extract the files to a folder of your choice.\
-   A. Open the file `Options.ini` and configure it based on your preferred organization method.
-      Run the script manually in PowerShell: <code>.\Organize-Downloads.ps1 </code> or altenatively you can double click the file `Organize-Downloads.ps1` to run it if your system has the appropriate file association.  [Learn more about it](https://locall.host/run-with-powershell-double-click/)\
-   B. Run the file `#Set Options and Run.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\\#Set Options and Run.ps1</code> <br>
-
+3. Execute select A (recommended) or B:<br>
+    **A.** Run the file `#Set Options and Run.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\\#Set Options and Run.ps1</code> <br>
+   <br>
+     **B.** Open the file `Options.ini` and configure it based on your preferred organization method.<br>
+      Run the file `Organize-Downloads.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\Organize-Downloads.ps1 </code>. <br> 
+ <br> 
+Learn more about file association https://locall.host/run-with-powershell-double-click/ \
+ 
 Enjoy organizing your Downloads folder with ease!
