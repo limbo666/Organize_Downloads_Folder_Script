@@ -1,4 +1,4 @@
-# Organize Downloads Folder Script
+s # Organize Downloads Folder Script
 **A PowerShell script to organize your Downloads folder based on file types, creation dates, or custom groupings.**
 
 This script allows you to organize files in your Downloads folder according to three different methods: 
@@ -39,7 +39,7 @@ The script comes with an Options.ini file that allows you to customize how your 
     ; True - Ignore files created today
     ; False - Include files created today
     IgnoreToday = True
-For easy use the file `#Set Options and Run.ps1` give user an interface to set all these options and run the organizer script.
+For easy use the file `#Set Options and Run.ps1` offers an interface to set all these options and run the organizer script.
 ![image](https://github.com/user-attachments/assets/6911e68a-e48e-46a9-b143-2968dd46fbda)
 
 
