@@ -12,6 +12,8 @@ by file extension, by file group (e.g., images, documents, compressed files), or
  - File Explorer Integration: Automatically opens the Downloads folder before starting the organization process (configurable).
  - Logging: Records the organization process in a log file (optional).
  - Option to ignore today's download files for easy access.
+ - GUI to select options. Offered as seperate laucher script `#Set Options and Run.ps1`
+   
 
 ### Configuration ###
 
@@ -37,12 +39,15 @@ The script comes with an Options.ini file that allows you to customize how your 
     ; True - Ignore files created today
     ; False - Include files created today
     IgnoreToday = True
+For easy use the file `#Set Options and Run.ps1` give user an interface to set all these options and run the organizer script.
+![image](https://github.com/user-attachments/assets/6911e68a-e48e-46a9-b143-2968dd46fbda)
 
-### Setup ###
+
+### Setup and Run ###
 1. Download the release package here.
-2. Extract the files to a folder of your choice.
-3. Open the Options.ini file and configure it based on your preferred organization method.
-4. Run the script manually in PowerShell: <code>.\Organize-Downloads.ps1 </code> <br>
-   Altenatively you can double click the `Organize-Downloads.ps1` file to run it if your system has the appropriate file association.  [Learn more about it](https://locall.host/run-with-powershell-double-click/)
+2. Extract the files to a folder of your choice.\
+   A. Open the file `Options.ini` and configure it based on your preferred organization method.
+      Run the script manually in PowerShell: <code>.\Organize-Downloads.ps1 </code> or altenatively you can double click the file `Organize-Downloads.ps1` to run it if your system has the appropriate file association.  [Learn more about it](https://locall.host/run-with-powershell-double-click/)\
+   B. Run the file `#Set Options and Run.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\\#Set Options and Run.ps1</code> <br>
 
 Enjoy organizing your Downloads folder with ease!
