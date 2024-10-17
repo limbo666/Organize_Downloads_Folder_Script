@@ -44,8 +44,8 @@ For easy use the file `#Set Options and Run.ps1` offers an interface to set all 
 
 
 ### Setup and Run ###
-1. Download the release package here.
-2. Extract the files to a folder of your choice.\
+1. Download the release package here: https://github.com/limbo666/Organize_Downloads_Folder_Script/releases.
+2. Extract the files to a folder of your choice.<br>
 3. Execute select A (recommended) or B:<br>
     **A.** Run the file `#Set Options and Run.ps1` by right clicking and selecting `Run with Powershell` or double clicking if your system has the appropriate file association or by typing in PowerShell: <code>.\\#Set Options and Run.ps1</code> <br>
    <br>
