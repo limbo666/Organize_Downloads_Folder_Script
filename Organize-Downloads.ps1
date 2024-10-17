@@ -102,9 +102,9 @@ function Move-ByGroup {
     Write-Log "Organizing files by Group (Images, Compressed, Documents). IgnoreToday: $IgnoreToday"
 
     # Define groups of file types
-    $ImageExtensions = @("jpg", "jpeg", "png", "webp", "bmp", "gif", "psd", "raw", "ai", "eps")
+    $ImageExtensions = @("jpg", "jpeg", "png", "webp", "bmp", "gif", "psd", "raw", "ai", "eps","avif","jfif")
     $CompressedExtensions = @("zip", "tar", "rar", "7z", "cab", "msi")
-    $DocumentExtensions = @("xls", "doc", "pdf", "xlsx", "docx", "ppt", "pptx")
+    $DocumentExtensions = @("xls", "doc", "pdf", "xlsx", "docx", "ppt", "pptx","rtf","txt")
 
 
     $TotalFilesMoved = 0
