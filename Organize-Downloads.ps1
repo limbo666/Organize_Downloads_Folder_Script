@@ -60,6 +60,7 @@ function Open-Explorer {
     Write-Log "Opening File Explorer at Downloads folder."
     Start-Process explorer.exe $DownloadsFolder
 }
+
 # Function to check if a file should be ignored based on the IgnoreToday setting
 function Should-IgnoreFile {
     param (
@@ -74,16 +75,24 @@ function Should-IgnoreFile {
     return $false
 }
 
-# Function to safely move a file, handling special characters
+# Function to safely move a file, handling duplicate names with incremental renaming
 function Safe-MoveItem {
     param (
         [string]$SourcePath,
         [string]$DestinationFolder
     )
     try {
-        $FileName = [System.IO.Path]::GetFileName($SourcePath)
-        $DestinationPath = Join-Path -Path $DestinationFolder -ChildPath $FileName
-
+        $FileName = [System.IO.Path]::GetFileNameWithoutExtension($SourcePath)
+        $Extension = [System.IO.Path]::GetExtension($SourcePath)
+        $DestinationPath = Join-Path -Path $DestinationFolder -ChildPath ($FileName + $Extension)
+        
+        # Ensure unique filename if a file with the same name exists
+        $Counter = 1
+        while (Test-Path -Path $DestinationPath) {
+            $DestinationPath = Join-Path -Path $DestinationFolder -ChildPath ("$FileName ($Counter)$Extension")
+            $Counter++
+        }
+        
         # Use .NET methods to move the file
         [System.IO.File]::Move($SourcePath, $DestinationPath)
         return $true
@@ -102,10 +111,9 @@ function Move-ByGroup {
     Write-Log "Organizing files by Group (Images, Compressed, Documents). IgnoreToday: $IgnoreToday"
 
     # Define groups of file types
-    $ImageExtensions = @("jpg", "jpeg", "png", "webp", "bmp", "gif", "psd", "raw", "ai", "eps","avif","jfif")
+    $ImageExtensions = @("jpg", "jpeg", "png", "webp", "bmp", "gif", "psd", "raw", "ai", "eps", "avif", "jfif")
     $CompressedExtensions = @("zip", "tar", "rar", "7z", "cab", "msi")
-    $DocumentExtensions = @("xls", "doc", "pdf", "xlsx", "docx", "ppt", "pptx","rtf","txt")
-
+    $DocumentExtensions = @("xls", "doc", "pdf", "xlsx", "docx", "ppt", "pptx", "rtf", "txt")
 
     $TotalFilesMoved = 0
     $TotalErrors = 0
@@ -147,21 +155,19 @@ function Move-ByGroup {
 
             # Move the file using the safe move function
             if (Safe-MoveItem -SourcePath $File.FullName -DestinationFolder $DestinationFolder) {
-                # Log the successful move
                 Write-Log "File moved: $($File.Name) to $DestinationFolder"
                 $TotalFilesMoved++
             }
             else {
                 $TotalErrors++
             }
-        } catch {
-            # Log the error
+        }
+        catch {
             Write-Log "Error processing file: $($File.Name) - $($_.Exception.Message)"
             $TotalErrors++
         }
     }
 
-    # Log final summary
     Write-Log "Files organized by Group. Total files moved: $TotalFilesMoved. Total errors: $TotalErrors. Total ignored: $TotalIgnored."
 }
 
@@ -196,21 +202,19 @@ function Move-ByExtension {
 
             # Move the file using the safe move function
             if (Safe-MoveItem -SourcePath $File.FullName -DestinationFolder $DestinationFolder) {
-                # Log the successful move
                 Write-Log "File moved: $($File.Name) to $DestinationFolder"
                 $TotalFilesMoved++
             }
             else {
                 $TotalErrors++
             }
-        } catch {
-            # Log the error
+        }
+        catch {
             Write-Log "Error processing file: $($File.Name) - $($_.Exception.Message)"
             $TotalErrors++
         }
     }
 
-    # Log final summary
     Write-Log "Files organized by file extension. Total files moved: $TotalFilesMoved. Total errors: $TotalErrors. Total ignored: $TotalIgnored."
 }
 
@@ -247,21 +251,19 @@ function Move-ByDate {
 
             # Move the file using the safe move function
             if (Safe-MoveItem -SourcePath $File.FullName -DestinationFolder $DestinationFolder) {
-                # Log the successful move
                 Write-Log "File moved: $($File.Name) to $DestinationFolder"
                 $TotalFilesMoved++
             }
             else {
                 $TotalErrors++
             }
-        } catch {
-            # Log the error
+        }
+        catch {
             Write-Log "Error processing file: $($File.Name) - $($_.Exception.Message)"
             $TotalErrors++
         }
     }
 
-    # Log final summary
     Write-Log "Files organized by date. Total files moved: $TotalFilesMoved. Total errors: $TotalErrors. Total ignored: $TotalIgnored."
 }
 
@@ -296,7 +298,7 @@ switch ($Method) {
     "Date" { Move-ByDate -IgnoreToday $IgnoreToday }
     "File" { Move-ByExtension -IgnoreToday $IgnoreToday }
     "Group" { Move-ByGroup -IgnoreToday $IgnoreToday }
-    default { Write-Log "Invalid method in ini file. Using default (Group)." ; Move-ByGroup -IgnoreToday $IgnoreToday }
+    default { Write-Log "Invalid method in ini file. Using default (Group)."; Move-ByGroup -IgnoreToday $IgnoreToday }
 }
 
 Write-Log "Process completed. Log file located at: $LogFilePath"
